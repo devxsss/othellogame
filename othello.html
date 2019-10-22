@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="favicon.ico">
+		
+		<!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	
+    <!-- Custom styles for this template -->
+    <link href="newrt.css" rel="stylesheet">
+    <title>OTHELLO</title>
+    <style>
+   
+    .green{
+        background-color:green;
+        border:2px solid;
+        width:55px;
+        height:50px;
+        display: inline-block;
+        line-height:0px;
+    }
+    .greenwhite{
+      background-color:greenyellow;
+        border:2px solid;
+        width:55px;
+        height:50px;
+        display: inline-block;
+        line-height:0px;
+    }
+    .banwhite{
+        background-image:url("white3.png");
+        border:2px solid;
+        width:55px;
+        height:50px;
+        display: inline-block;
+        line-height:0px;
+    }
+    .banblack{
+        background-image:url("black7.png");
+        border:2px solid;
+        width:55px;
+        height:50px;
+        display: inline-block;
+        line-height:0px;
+    }
+    
+    body>div{
+        padding:0px;
+        line-height:0px;
+         
+       
+    }
+    
+        #score{
+            text-align:center;
+            font-size: 18px;
+        margin:20px;
+        }
+    #bann{
+     
+        text-align:center;
+       
+    }
+
+    #reset{
+
+        text-align:center;
+            font-size: 18px;
+        margin:20px;
+
+    }
+    #winner{
+        text-align:center;
+        font-size: 18px;
+        margin:20px;
+    }
+    #status{
+      
+        text-align:center;
+        font-size: 18px;
+        margin:20px;
+    }
+        
+        #score2{
+            text-align:center;
+        font-size: 18px;
+        margin:20px;
+        }
+ 
+        .head{
+            
+            font-size:25px;
+           
+    font-size: 4.0rem;
+    line-height: 1;
+    position: relative;
+    font-family: sans-serif;
+    
+        }
+
+
+
+#groundAnimation {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    animation: trawa 20s infinite normal linear;
+    background-color: #66cc33;
+    z-index: 2;
+}
+
+
+#moonAnimation {
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    left: 450px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 100%;
+    overflow: hidden;
+    animation: ksiezyc 20s 10s infinite normal linear;
+    opacity: 0;
+}
+
+#doorAnimation {
+    position: absolute;
+    z-index: 4;
+    height: 50px;
+    width: 30px;
+    left: 100px;
+    bottom: 50px;
+    background-color: black;
+    animation: drzwi 20s infinite normal linear;
+}
+
+#roofAnimation {
+    position: absolute;
+    z-index: 2;
+    bottom: 200px;
+    left: 55px;
+    height: 0;
+    width: 0;
+    border-bottom: 140px solid green;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    animation: dach 20s infinite normal linear;
+}
+
+
+
+
+#windmillAnimation {
+    position: absolute;
+    z-index: 3;
+    bottom: 50px;
+    left: 85px;
+    height: 150px;
+    width: 200px;
+    background-color: #97694F;
+    animation: budynek 20s infinite normal linear;
+}
+
+#doorAnimation {
+    position: absolute;
+    z-index: 4;
+    height: 50px;
+    width: 30px;
+    left: 100px;
+    bottom: 50px;
+    background-color: black;
+    animation: drzwi 20s infinite normal linear;
+}
+
+#roofAnimation {
+    position: absolute;
+    z-index: 2;
+    bottom: 200px;
+    left: 55px;
+    height: 0;
+    width: 0;
+    border-bottom: 140px solid green;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    animation: dach 20s infinite normal linear;
+}
+
+
+
+@keyframes wiatrak {
+   0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes wiatrak1 {
+    0% {
+        transform: rotate(90deg);
+    }
+    100% {
+        transform: rotate(450deg);
+    }
+}
+
+@keyframes wiatrak2 {
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(540deg);
+    }
+}
+
+@keyframes wiatrak3 {
+    0% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(630deg);
+    }
+}
+
+
+@keyframes dach {
+    0% {
+        border-bottom: 140px solid #191919;
+    }
+    50% {
+        border-bottom: 140px solid #5f5f5f
+    }
+    100% {
+        border-bottom: 140px solid #191919
+    }
+}
+
+
+    </style>
+
+    
+</head>
+<header>
+
+</header>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+          <div class="collapse navbar-collapse ">
+    
+          <div class="navbar-header">
+          <a class="navbar-brand page-scroll" href="#page-top"></a>
+          <h1 class="head" >OTHELLO ゲーム</h1>
+          <h1 class="head" >T170d517-MARIA DEVINA NATASHA</h1>
+        </div>
+      
+            </div>
+          </div>
+        </nav>
+    
+
+</header>
+
+<body>
+   <div id="groundAnimation"></div>
+    <div id="sunAnimation"></div>
+
+    <div id ="roofAnimation"></div>
+    <div id ="windmillAnimation"></div>
+    <div id ="doorAnimation"></div>
+   <div class ="animation"></div>
+<div id="status">
+
+White turn
+</div>
+
+<div id="bann"> </div>
+
+
+   
+    <div id="score">
+    <label id="blackk" ></label>
+    <label id="white"></label>
+    </div>
+   
+    <div id ="score2">
+        
+    <label id="winner" for="winner"></label>
+    <button id="reset" onclick="b()" style="visibility:hidden" type="button" class="btn btn-primary">やりなおす？</button>
+    </div>
+ 
+
+<script >
+
+
+$(document).ready(function () {
+  $('button').click( b());});
+
+
+  function hikiwake(){
+      if(document.querySelector(".greenwhite")==null)
+           {  y=document.getElementById("reset").style.visibility="visible";
+             $("reset").style.visibility="visible";
+  }}
+
+  function b(){
+    ban=[[0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,2,1,0,0,0],
+             [0,0,0,1,2,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0]];
+             $("reset").style.visibility="hidden";
+a();
+
+        }
+  
+
+
+          
+
+function win(ban){
+            var blackcount=0;
+            var whitecount=0;
+            for(var i=0;i<8;i++){
+                for(var t=0;t<8;t++){
+                    if(ban[i][t]==1)
+                        whitecount+=1;
+                    if(ban[i][t]==2)
+                       blackcount+=1;
+                }
+            }
+            var blackk=document.getElementById("blackk");
+            var whitee=document.getElementById("white");
+            blackk.innerHTML="黒 :"+blackcount;
+            whitee.innerHTML="白 :"+whitecount ;
+       //if(document.querySelector(".greenwhite")==null)
+        //     { 
+          //   if(player==1)
+            //  player=2;
+            //else if(player==2)
+            //   player=1;
+            //find();
+                  
+              //}
+        //   else
+
+       
+            
+              if(whitecount+blackcount==64 && document.querySelector(".greenwhite")==null )
+                winner(whitecount,blackcount);
+                else if((whitecount+blackcount)<64 && document.querySelector(".greenwhite")==null && document.querySelector(".green")!=null  )
+                hikiwake();
+            //else if(document.querySelector(".greenwhite")==null)
+              //  winner(whitecount,blackcount);
+
+        }
+
+    function winner(whitecount,blackcount){
+    
+            var y=document.getElementById("winner");
+            if(blackcount>whitecount)
+                y.innerHTML="黒が勝、おめでとう";
+            else if(whitecount<blackcount)
+                {y.innerHTML="白が勝、おめでとう";
+            
+                }
+            else if(whitecount==blackcount)
+                    y.innerHTML="引き分けです";
+                
+            
+           
+    }
+
+        ban=[[0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,2,1,0,0,0],
+             [0,0,0,1,2,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0],
+             [0,0,0,0,0,0,0,0]];
+
+
+            var i;
+            var j;
+
+
+        function a(){
+           document.getElementById("bann").innerHTML="";
+            
+            for(i=0;i<ban.length;i++){
+                for( j=0;j<ban[i].length;j++){
+
+                    if(ban[i][j]===0)
+                    document.getElementById("bann").innerHTML+="<div class='green "+i+j+"' onclick=' clickfunc("+i+","+j+");'></div>";
+                    
+                    else if(ban[i][j]===1)
+                    document.getElementById("bann").innerHTML+="<div class='banwhite "+i+j+"' onclick=' clickfunc("+i+","+j+");'></div>";
+                    else if(ban[i][j]===2)
+                    document.getElementById("bann").innerHTML+="<div class='banblack "+i+j+"' onclick=' clickfunc("+i+","+j+");'></div>";
+                }
+      
+                    document.getElementById("bann").innerHTML+="<br>";
+            }
+            
+            find();
+       
+            win(ban);
+
+        }
+
+        window.onload=a;
+      
+    
+        var player=1;
+        
+        function recursivewhite(i,j,k,z){　//コマを秘繰り返すため
+
+            if(i>7||j>7||i<0||j<0){
+            return 2;//karena sebelahnya berlawanan
+        }
+        
+        if(ban[i][j]==1)
+        {   return 1;
+        }
+        if(ban[i][j]==0)
+        return 2; //karena return si item lagi ketika ijo
+
+        //if(ban[i+k][j+z]==2&&k>=0)
+        ban[i][j]=recursivewhite(i+k,j+z,k,z);
+        return ban[i][j];
+       }
+
+
+function recursiveblack(i,j,k,z){
+
+if(i>7||j>7||i<0||j<0){
+    return 1;
+}
+
+if(ban[i][j]==2)
+{   return 2;
+}
+
+if(ban[i][j]==0)
+return 1; //karena return si item lagi ketika ijo
+
+//if(ban[i+k][j+z]==2&&k>=0)
+ban[i][j]=recursiveblack(i+k,j+z,k,z);
+return ban[i][j];
+}
+
+
+
+function checkk(i,j){　
+    var y=0;
+for(var t=0;t<8;t++)
+    {
+        if(checkposit(i+id[t][y],j+id[t][y+1],1)<=0 ){
+if(ban[i+id[t][y]][j+id[t][y+1]]===2 && ban[i][j]==1 )
+recursivewhite(i+id[t][y],j+id[t][y+1],id[t][y],id[t][y+1]);
+else if( ban[i+id[t][y]][j+id[t][y+1]]===1 && ban[i][j]==2  )
+recursiveblack(i+id[t][y],j+id[t][y+1],id[t][y],id[t][y+1]);
+
+}
+}
+}
+
+
+var id=[[1,-1],[-1,1],[1,1],[-1,-1],[0,1],[1,0],[-1,0],[0,-1]]
+
+
+
+
+
+       function clickfunc(i,j){
+        console.log(i,j);
+           
+        if(document.querySelector("[class='"+i+j+" greenwhite']")){
+        if(ban[i][j]===0 && player===1 && checkblack(i,j,1,1)>=1 ){
+            console.log(checkblack(i,j,2));
+            document.getElementById("status").innerHTML="黒の手番";
+            ban[i][j]=1;
+            player=2;
+           checkk(i,j);
+          
+           
+          
+            a();
+        } else if(ban[i][j]===0 && player===2 && checkwhite(i,j,2,1)>=1){
+            console.log(checkblack(i,j,2));
+            document.getElementById("status").innerHTML="白の手番";
+            ban[i][j]=2;
+            player=1;
+          
+            checkk(i,j);
+           
+           
+            a();
+        }
+        }
+       }
+       function checkposit(i,j,k){
+           var count=0;
+           if(i<0 || j<0 ||j>7 ||i>7)
+           count++;
+          return count;
+       }
+       
+       function checkwhite(i,j,k,l){
+           count=0;
+           const el=document.querySelector(".green");
+
+            if(l<=-1)
+            return 0;
+
+        if(i>7||j>7||i<0||j<0){
+            return 0;
+        }
+
+          //if(el.contains(".greenwhite"))
+         //  return 1;
+
+        
+
+       if(ban[i][j]==1)
+       return 1;
+
+       if(ban[i][j]==0 && l!=1)
+       return 0;
+   
+        return count + checkwhite(i+1,j+1,k,l-1)+checkwhite(i,j+1,k,l-1)+checkwhite(i,j-1,k,l-1)+checkwhite(i-1,j,k,l-1)+checkwhite(i+1,j,k,l-1)+checkwhite(i-1,j-1,k,l-1)+checkwhite(i+1,j-1,k,l-1)+checkwhite(i-1,j+1,k,l-1);
+
+       }
+
+       function checkblack(i,j,k,l){
+        const el=document.querySelector(".green");
+           count=0;
+           if(l<=-1)
+            return 0;
+           if(i>7||j>7||i<0||j<0){
+            return 0;
+        }
+           if(ban[i][j]==2)
+           return 1;
+
+          //if(el.contains(".greenwhite"))
+           //return 1;
+
+         if(ban[i][j]==0 && l!=1)
+       return 0;
+        return count+checkblack(i,j+1,k,l-1)+checkblack(i,j-1,k,l-1)+checkblack(i-1,j,k,l-1)+checkblack(i+1,j,k,l-1)+checkblack(i+1,j+1,k,l-1)+checkblack(i-1,j-1,k,l-1)+checkblack(i+1,j-1,k,l-1)+checkblack(i-1,j+1,k,l-1);
+
+}
+
+var t=0;
+var timer;
+function ifgreen(i,j){
+    var butu="green "+i+j;
+    var y=document.getElementsByClassName(butu);
+    y[0].classList.toggle("greenwhite"); 
+    y[0].classList.toggle("green");
+            
+}
+
+function interval(){
+    if(t<3){
+            var y=document.getElementsByClassName('green 54');
+             y[0].classList.toggle("greenwhite"); 
+             y[0].classList.toggle("green");
+    t++;
+        }
+        else{
+            clearInterval(timer);
+        }
+}
+
+function find(){
+    for(var i=0;i<8;i++)
+            {for(var j=0;j<8;j++)
+              {
+                  if(ban[i][j]==player){
+                    hint(i,j);
+                  }
+              }
+            }
+}
+
+      function hint(i,j){　//ヒントを上げる
+          var y=0;
+          var k=0;
+          var z=0;
+         
+                    for(var t=0;t<8;t++)
+                        {
+                            if(player==1){
+                        if(checkposit(i+id[t][y],j+id[t][y+1],1)<=0 ){
+                        if(ban[i+id[t][y]][j+id[t][y+1]]===2 && ban[i][j]==1 )
+                        {    k=i+id[t][y];
+                             z=j+id[t][y+1];
+                            while(checkposit(k,z,1)<=0)
+                            {   
+                                if(ban[k][z]==1)
+                                break;
+                                if(ban[k][z]==0)
+                                {ifgreen(k,z);
+                                break;}
+                                k+=id[t][y];
+                                z+=id[t][y+1];
+                            }
+                       
+
+                        }
+                        }
+                            }else if(player==2){
+                                if(checkposit(i+id[t][y],j+id[t][y+1],1)<=0 ){　//もし枠に超えるかどうかチェック
+                        if(ban[i+id[t][y]][j+id[t][y+1]]===1 && ban[i][j]==2 )
+                        {    k=i+id[t][y];
+                             z=j+id[t][y+1];
+                            while(checkposit(k,z,1)<=0)
+                            {   
+                                if(ban[k][z]==2)
+                                break;
+                                if(ban[k][z]==0)
+                                {ifgreen(k,z);
+                                break;}
+                                k+=id[t][y];
+                                z+=id[t][y+1];
+                            }
+                        
+
+                        }
+                       
+                      
+                    }
+                }
+                            
+                        }
+       
+      }
+
+ /*     var k=document.querySelectorAll(".greenwhite");
+    k.length;
+    function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+  
+}
+var u=getRandomInt(3);
+//k[u];
+*/
+    </script>
+
+
+</body>
+</html>
+
+
